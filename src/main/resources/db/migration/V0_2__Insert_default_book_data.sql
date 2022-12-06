@@ -1,5 +1,5 @@
-insert into book (id, author, title) values (1, 'Dacy', 'Company, The');
-insert into book (id, author, title) values (2, 'Callie', 'American Adobo');
+insert into book (id, author, title) values (1, null, 'Company, The');
+insert into book (id, author, title) values (2, null, 'American Adobo');
 insert into book (id, author, title) values (3, 'Elsworth', 'Taxi Hunter (Di shi pan guan)');
 insert into book (id, author, title) values (4, 'Amby', 'Man with the Gun');
 insert into book (id, author, title) values (5, 'Tamas', 'They Live by Night');
