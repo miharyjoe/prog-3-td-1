@@ -34,14 +34,15 @@ public class BookService {
     TODO-2-ii : Only ID, title and author should be provided during the update.
     Therefore, the pageNumber and the release date exists also in the Book model.
     A solution to update a book without the pageNumber and the releaseDate ?
-        Create a app.prog.controller.request mapper
+        Creer une model BookUpdtade (avec ID, Title and author )ou l'on va faire une mapper que l'on va
+        utiliser dans le controler put
      */
     public List<Book> updateBooks(List<Book> toUpdate) {
         return repository.saveAll(toUpdate);
     }
 
     //TODO-3: should I use Integer here or int ? Why ?
-            //int car c'est un nombre
+            //int car notre id est int
     public Book deleteBook(int bookId) {
         /*
         TIPS: From the API, the Class Optional<T> is :
