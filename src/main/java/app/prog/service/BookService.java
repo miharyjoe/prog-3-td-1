@@ -22,6 +22,7 @@ public class BookService {
     The ID is created by default by the database so it should not be provided at all.
     Therefore, the pageNumber and the releaseDate exists also in the Book model.
     A solution to create a book without the ID, the pageNumber and the releaseDate ?
+        create a mapper et créer automatiquement la date lors de l'entrée du donnée
      */
     public List<Book> createBooks(List<Book> toCreate) {
         return repository.saveAll(toCreate);
@@ -29,16 +30,19 @@ public class BookService {
 
     /*
     TODO-2-i: Why the createBooks and the updateBooks use the same repository method saveAll ?
+    Parce que c'est la methode pour enregistrer dans le db
     TODO-2-ii : Only ID, title and author should be provided during the update.
     Therefore, the pageNumber and the release date exists also in the Book model.
     A solution to update a book without the pageNumber and the releaseDate ?
+        Create a app.prog.controller.request mapper
      */
     public List<Book> updateBooks(List<Book> toUpdate) {
         return repository.saveAll(toUpdate);
     }
 
     //TODO-3: should I use Integer here or int ? Why ?
-    public Book deleteBook(int bookId) {
+            //
+    public Book deleteBook(Integer bookId) {
         /*
         TIPS: From the API, the Class Optional<T> is :
         A container object which may or may not contain a non-null value.
