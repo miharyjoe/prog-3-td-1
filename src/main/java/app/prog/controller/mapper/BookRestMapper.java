@@ -21,6 +21,8 @@ public class BookRestMapper {
                 .id(domain.getId())
                 .title(domain.getTitle())
                 .author(domain.getAuthor())
+                .page(domain.getPageNumber())
+                .releaseDate(domain.getReleaseDate())
                 .hasAuthor(domain.hasAuthor())
                 .build();
     }
