@@ -1,0 +1,105 @@
+openapi: 3.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/hei-ryan/PROG3_TD1/1.0.0
+info:
+  version: "latest"
+  title: PROG3 - TD1
+paths:
+  /books:
+    get:
+      tags:
+        - Books
+      summary: get all books
+      operationId: getBooks
+      responses:
+        '200':
+          description: List of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - Books
+      summary: create new books
+      operationId: createBooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBook'
+      responses:
+        '200':
+          description: List of created books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '500':
+          description: Internal server error
+    put:
+      tags :
+        - Books
+      summary: update some books
+      operationId: updateBooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '200':
+          description: List of updated books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '500':
+          description: Internal server error
+  /books/{bookId}:
+    delete:
+      tags :
+        - Books
+      summary: delete a specific book
+      operationId: deleteBook
+      parameters:
+        - in: path
+          name: bookId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+        hasAuthor:
+          type: boolean
+      allOf:
+        - $ref: '#/components/schemas/CreateBook'
+    CreateBook:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
