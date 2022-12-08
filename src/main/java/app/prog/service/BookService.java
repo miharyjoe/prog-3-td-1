@@ -61,6 +61,8 @@ public class BookService {
         TODO-5 : The exception appears as an internal server error, status 500.
         We all know that the appropriate error status is the 404 Not Found.
         Any solution to do this ?
+        Ajoute une parametre dans deleteBook controller qui est HttpServletResponse apres on ajoute
+        try(pour la requete) et catch lorsqu'il est not found et qui retourne 404
         These links may help you :
         Link 1 : https://www.baeldung.com/spring-response-entity
         Link 2 : https://www.baeldung.com/exception-handling-for-rest-with-spring
