@@ -6,8 +6,11 @@ import app.prog.controller.response.CreateBookResponse;
 import app.prog.controller.response.UpdateBookResponse;
 import app.prog.model.BookEntity;
 import app.prog.service.BookService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -45,7 +48,12 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{bookId}")
-    public BookResponse deleteBook(@PathVariable Integer bookId) {
-        return mapper.toRest(service.deleteBook(bookId));
+    public BookResponse deleteBook(@PathVariable Integer bookId, HttpServletResponse response) {
+        try {
+            return mapper.toRest(service.deleteBook(bookId));
+        } catch (RuntimeException exc) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "book Not Found", exc);
+        }
     }
 }
