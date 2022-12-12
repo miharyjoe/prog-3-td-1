@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -33,7 +34,7 @@ public class AuthorService {
             repository.delete(optional.get());
             return optional.get();
         } else {
-            throw new RuntimeException("BookEntity." + authorEntityid + " not found");
+            throw new NoSuchElementException("BookEntity." + authorEntityid + " not found");
         }
     }
 }
